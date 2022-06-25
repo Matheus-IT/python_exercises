@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block content %}
+	<div class="back-to-home">
+		&lt;
+		<a class="back-to-home__text" href="/">Voltar para home</a>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="table__head" colspan="2">Cálculo do Imposto de Renda</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for k, v in calc_result.items %}
+				<tr class="table__row">
+					<td class="table__col left">{{ k }}</td>
+					<td class="table__col right">{{ v }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

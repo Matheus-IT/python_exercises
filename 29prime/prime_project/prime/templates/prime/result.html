@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.table {
+			text-align: right;
+			border-collapse: collapse;
+		}
+		.col-left {
+			padding-right: 0.2em;
+		}
+		.col-right {
+			border-left: 1px solid black;
+			padding-left: 0.2em;
+		}
+	</style>
+</head>
+<body>
+	<h3>Decomposição em fatores primos de {{ form.data.number }}</h3>
+
+	<table class="table">
+		{% for factor in factors %}
+			<tr class="table__row">
+				<td class="col-left">{{ factor.0 }}</td>
+				<td class="col-right">{{ factor.1 | default_if_none:"" }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	<a href="/">Retornar</a>
+</body>
+</html>

@@ -1,0 +1,4 @@
+casa
+cozinha
+computador
+mouse

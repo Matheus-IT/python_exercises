@@ -1,0 +1,57 @@
+/* Calendar home page form */
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #fdfdfd;
+	border: 1px dashed black;
+	width: 40em;
+	margin: 2em auto auto auto;
+	padding: 1em;
+	height: fit-content;
+}
+
+.form__title {
+	text-align: center;
+}
+
+.form__fields {
+	width: 60%;
+}
+
+.form__fields input {
+	width: 88%; /* Leave space for labels */
+}
+
+.form__button {
+	padding: 0.8em;
+}
+
+.form__button:hover {
+	cursor: pointer;
+}
+
+/* Footer */
+.footer {
+	width: fit-content;
+	margin: auto;
+}
+
+/* Month calendar styles */
+.month-calendar {
+	width: fit-content;
+	margin: auto;
+}
+
+.month-calendar__title {
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.month-calendar td {
+	padding: 0.4em;
+}

@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+
+{% block content %}
+	<form class="form" action="" method="post">
+		<h3 class="form__title">Cálculo do Imposto de Renda</h3>
+		{% csrf_token %}
+
+		<div class="form__fields">
+			{{form.as_p}}
+		</div>
+
+		<input class="form__button" type="submit" value="Enviar" />
+	</form>
+{% endblock %}

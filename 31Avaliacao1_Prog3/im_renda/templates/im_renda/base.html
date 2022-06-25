@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'im_renda/styles.css' %}">
+	<title>
+		{% block title %}Imposto de renda{% endblock %}
+	</title>
+</head>
+<body>
+	{% block content %}{% endblock %}
+
+  <footer class="footer">
+    <h3 class="footer__title">Integrantes da equipe</h3>
+    <ul class="team-members">
+      <li class="team-members__member">Matheus da Costa da Silva</li>
+      <li class="team-members__member">Adaline Nogueira Firmo</li>
+      <li class="team-members__member">Henrique Silva</li>
+    </ul>
+  </footer>
+</body>
+</html>

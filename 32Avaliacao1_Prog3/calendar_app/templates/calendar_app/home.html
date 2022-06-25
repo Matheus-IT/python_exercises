@@ -1,0 +1,13 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <form class="form" action="" method="get">
+        <h3 class="form__title">Escolha um mês e um ano</h3>
+
+        <div class="form__fields">
+            {{ form.as_p }}
+        </div>
+
+        <input class="form__button" type="submit" value="Submeter" />
+    </form>
+{% endblock %}

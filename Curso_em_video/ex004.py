@@ -1,0 +1,10 @@
+#Tipos primitivos
+v = input('\033[1;32mDigite algo: \033[m')
+print('\033[1;35mO tipo primitivo desse valor é: {}\033[m' .format(type(v)))
+print('\033[1;34mSó tem espaços? {}\033[m' .format(v.isspace()))
+print('\033[1;35mÉ um número? {}\033[m' .format(v.isnumeric()))
+print('\033[1;34mÉ alfabético? {}\033[m' .format(v.isalpha()))
+print('\033[1;35mÉ alfanumérico? {}\033[m' .format(v.isalnum()))
+print('\033[1;34mEstá em maiúsculas? {}\033[m' .format(v.isupper()))
+print('\033[1;35mEstá em minúsculas? {}\033[m' .format(v.islower()))
+print('\033[1;34mEstá capitalizada? {}\033[m' .format(v.istitle()))

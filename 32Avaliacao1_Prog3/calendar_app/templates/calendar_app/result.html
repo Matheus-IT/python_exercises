@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="month-calendar">
+        <h3 class="month-calendar__title">Resultado</h3>
+
+        {{ month_calendar | safe }} <!-- displayed as html -->
+
+        <a href="/">Retornar</a>
+    </div>
+{% endblock %}

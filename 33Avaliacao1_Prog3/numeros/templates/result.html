@@ -1,0 +1,33 @@
+{% extends './base.html' %}
+
+{% block header %}
+    <title>Resultado!</title>
+{% endblock %}
+
+
+{% block body %}
+    {% if player_win %}
+        <h1>Parabéns você acertou! 😃</h1>
+        <p>Você jogou o número {{ num | default_if_none:"errado" }} e o número que eu tinha pensado era {{ chosen_number }}.</p>
+        <a href="/">Jogar novamente!</a>
+    {% elif num_chances == 0 %}
+        <h1>Você perdeu! 😂</h1>
+        <p>Você jogou por último {{ num | default_if_none:"errado" }} e o número que eu tinha pensado era {{ chosen_number }}.</p>
+        <p>Você não tem mais tentativas.</p>
+
+        <a href="/">Tentar novo jogo</a>
+    {% else %}
+        <h1>Você errou! 😛</h1>
+        <p>Você jogou o número {{ num | default_if_none:"errado" }}.</p>
+        <p>Você ainda tem {{ num_chances }} tentativas.</p>
+        <p>Tente novamente:</p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {{form}}
+
+            <input type="submit" value="Enviar de novo" />
+        </form>
+    {% endif %}
+{% endblock %}

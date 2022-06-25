@@ -1,0 +1,8 @@
+n = float(input('\033[1;37mDigite um valor em metros: \033[m'))
+print('\033[1;36mA medida de {:.0f}m corresponde a: \033[m'.format(n))
+print('\033[1;35mEm quilômetros: {}Km\033[m'.format(n/10**3))
+print('\033[1;34mEm hectômetros: {}hm\033[m'.format(n/10**2))
+print('\033[1;33mEm decâmetros: {}dam\033[m'.format(n/10))
+print('\033[1;32mEm decímetro: {:.0f}dm\033[m'.format(n*10))
+print('\033[1;31mEm centímetros: {:.0f}cm\033[m'.format(n*10**2))
+print('\033[1;37mE milímetros: {:.0f}mm\033[m '.format(n*10**3))

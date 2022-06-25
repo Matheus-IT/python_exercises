@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Styles for form of home page */
+
+.form {
+	width: 36em;
+	height: fit-content;
+	margin: 4em auto 0 auto;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+	justify-content: space-between;
+	border: 1px solid gray;
+	border-radius: 0.6em;
+	font-family: 'Roboto', sans-serif;
+}
+
+.form__title {
+	text-align: center;
+	font-weight: 500;
+}
+
+.form__fields p {
+	display: flex;
+	justify-content: space-between;
+	width: 47%; /* Make the fields alight  */
+	font-weight: 400;
+	font-size: 0.8em;
+}
+.form__fields p:not(:last-child) {
+	margin-bottom: 0.4em;
+}
+
+.form__button {
+	margin-top: 0.4em;
+	border-radius: 0.4em;
+	box-shadow: 2px 2px 2px lightgrey;
+	padding: 0.8em;
+	border: none;
+	color: #888888;
+	font-weight: 500;
+	transition: background-color 250ms, color 250ms;
+}
+
+.form__button:hover {
+	cursor: pointer;
+	font-weight: 600;
+	background-color: #1e84ad;
+	color: white;
+}
+
+/* Styles for resulting table of result page */
+.back-to-home {
+	position: absolute;
+	top: 2em;
+	left: 30%;
+	transition: 500ms;
+}
+
+.back-to-home:hover {
+	left: 29%;
+}
+
+.back-to-home__text {
+	color: rgb(99, 99, 99);
+	text-decoration: none;
+}
+
+.table {
+	margin: 4em auto auto auto;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+	border-collapse: collapse;
+	box-shadow: 2px 2px 2px lightgrey;
+	border-radius: 0.4em;
+}
+
+.table__head {
+	background-color: #1e84ad;
+	color: #fff;
+	text-align: center;
+	font-weight: 500;
+	font-size: 1.2em;
+	padding: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-top-left-radius: 0.4em;
+}
+
+.table__row:nth-child(even) {
+	background-color: #249fcf;
+	color: #fff;
+}
+
+.table__col {
+	font-size: 1em;
+	font-weight: 400;
+	padding: 0.4em;
+}
+
+.table__col.right {
+	text-align: center;
+}
+
+/* Styles for footer of base template */
+.footer {
+	position: absolute;
+	bottom: 6em;
+	margin: auto 50vw;
+	transform: translateX(-50%);
+	width: max-content;
+}
+
+.team-members {
+	list-style: none;
+}
