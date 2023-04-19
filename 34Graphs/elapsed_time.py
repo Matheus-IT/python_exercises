@@ -1,11 +1,11 @@
-import time
+from timeit import default_timer as timer
 
 
 class Timer:
     def __enter__(self):
-        self.start = time.perf_counter()
+        self.start = timer()
         return self
 
     def __exit__(self, *exc_info):
-        end = time.perf_counter()
+        end = timer()
         print(end - self.start)
