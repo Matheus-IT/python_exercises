@@ -12,23 +12,25 @@ links = [
     for _ in range(l)
 ]
 
-
 temp = links.copy()
 hanging = []
 
+def verify(link, temp):
+    for l in temp:
+        if (
+            link[0] == l[0] or link[0] == l[1]
+            or link[1] == l[0] or link[1] == l[1]
+        ):
+            temp.append(link)
+            break
+            return True
+    return False
+
 for link in links:
     temp.remove(link)
-    hanging_left = [l[0] for l in temp]
-    hanging_right = [l[1] for l in temp]
-
-    if (
-        link[0] in hanging_left
-        or link[0] in hanging_right
-        or link[1] in hanging_left
-        or link[1] in hanging_right
-    ):
-        temp.append(link)
-        continue
+    
+    if not verify(link, temp):
+        continue    
     hanging.append(link)
 
 if hanging:
