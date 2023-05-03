@@ -14,7 +14,7 @@ def main():
         discovered = LifoQueue()
         explored = []
 
-        root = int(input("Escolha qual será a raiz:"))
+        root = int(input("Escolha qual será a raiz: "))
 
         discovered.put(root)
 
