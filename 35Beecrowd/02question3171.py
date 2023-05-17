@@ -15,22 +15,20 @@ links = [
 temp = links.copy()
 hanging = []
 
+
 def verify(link, temp):
     for l in temp:
-        if (
-            link[0] == l[0] or link[0] == l[1]
-            or link[1] == l[0] or link[1] == l[1]
-        ):
+        if link[0] == l[0] or link[0] == l[1] or link[1] == l[0] or link[1] == l[1]:
             temp.append(link)
-            break
             return True
     return False
 
+
 for link in links:
     temp.remove(link)
-    
+
     if not verify(link, temp):
-        continue    
+        continue
     hanging.append(link)
 
 if hanging:
