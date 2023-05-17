@@ -1,37 +1,23 @@
-n, l = list(map(int, input().split()))
+while True:
+    try:
+        n, l = list(map(int, input().split()))
+    except EOFError:
+        break
 
-segments = [i + 1 for i in range(n)]
-
-links = [
-    tuple(
-        map(
-            int,
-            input().split(),
+    links = [
+        tuple(
+            map(
+                int,
+                input().split(),
+            )
         )
-    )
-    for _ in range(l)
-]
+        for _ in range(l)
+    ]
 
-temp = links.copy()
-hanging = []
+    print(links)
+    print(n)
 
-
-def verify(link, temp):
-    for l in temp:
-        if link[0] == l[0] or link[0] == l[1] or link[1] == l[0] or link[1] == l[1]:
-            temp.append(link)
-            return True
-    return False
-
-
-for link in links:
-    temp.remove(link)
-
-    if not verify(link, temp):
-        continue
-    hanging.append(link)
-
-if hanging:
-    print("INCOMPLETO")
-else:
-    print("COMPLETO")
+    if len(links) < n - 1:
+        print("INCOMPLETO")
+    else:
+        print("COMPLETO")
