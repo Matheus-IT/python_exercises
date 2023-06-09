@@ -6,3 +6,10 @@ with open("34Graphs/in4.txt") as f:
     edges = get_edges(f)
 
     adj_vec = get_adjacency_vector(edges, qv, is_directed=True)
+    print(adj_vec)
+
+    degree_zero = []
+    for e in adj_vec.values():
+        if len(e) == 0:
+            degree_zero += []
+    print(degree_zero)

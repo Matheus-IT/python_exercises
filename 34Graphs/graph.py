@@ -15,7 +15,6 @@ def get_adjacency_vector(edges, quantity_of_vertices, is_directed=False):
     adj_vector = {i + 1: [] for i in range(quantity_of_vertices)}
 
     for e in edges:
-        print("e", e)
         adj_vector[e[0]].append(e[1])
         if not is_directed:
             adj_vector[e[1]].append(e[0])
