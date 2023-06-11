@@ -1,5 +1,6 @@
 from queue import LifoQueue
 from graph import get_edges, get_adjacency_vector
+from typing import Dict, List
 
 
 def dfs(adj_vector):
@@ -13,15 +14,24 @@ def dfs(adj_vector):
     discovered.put(root)
 
     while not discovered.empty():
-        v = discovered.get()
-
-        if not marked[v]:
-            marked[v] = True
-            explored.append(v)
-
-            for neighbor in adj_vector[v][::-1]:
-                discovered.put(neighbor)
+        handle_dfs_iteration(discovered, adj_vector, marked, explored)
     return explored
+
+
+def handle_dfs_iteration(
+    discovered: LifoQueue,
+    adj_vector: Dict[str, List],
+    marked: dict,
+    explored: list,
+):
+    v = discovered.get()
+
+    if not marked[v]:
+        marked[v] = True
+        explored.append(v)
+
+        for neighbor in adj_vector[v][::-1]:
+            discovered.put(neighbor)
 
 
 def main():
