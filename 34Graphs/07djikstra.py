@@ -3,10 +3,7 @@ with open("34Graphs/in5.txt") as f:
     n = int(first_line.strip().split()[0])
     m = first_line.strip().split()[1]
 
-    adj_list = {}
-
-    for v in range(n):
-        adj_list[v] = []
+    adj_list = {v: [] for v in range(n)}
 
     for line in f:
         u = int(line.strip().split()[0])
