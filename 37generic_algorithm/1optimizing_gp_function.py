@@ -31,6 +31,18 @@ def evaluate_fitness(population):
     return population
 
 
+def tournament_selection(population, tournament_size):
+    selected = []
+    population_size = len(population)
+    for _ in range(population_size):
+        # Seleciona aleatoriamente k cromossomos para o torneio
+        tournament_candidates = random.sample(population, tournament_size)
+        # Escolhe o cromossomo com a menor aptidão no torneio
+        winner = min(tournament_candidates, key=lambda e: e["fitness"])
+        selected.append(winner)
+    return selected
+
+
 # Exemplo de uso
 population_size = 50
 
@@ -45,3 +57,8 @@ print("-" * 50)
 
 population = evaluate_fitness(population)
 ic(population)
+
+print("-" * 50)
+
+selected = tournament_selection(population, tournament_size=2)
+ic(selected)
