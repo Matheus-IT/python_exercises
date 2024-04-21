@@ -36,12 +36,12 @@ def evaluate_fitness(population):
 def tournament_selection(population, tournament_size):
     # Seleciona aleatoriamente k cromossomos para o torneio
     tournament_candidates = random.sample(population, tournament_size)
-    # Escolhe o cromossomo com a menor aptidão no torneio
+    # Escolhe o cromossomo com a melhor aptidão no torneio
     parent1 = min(tournament_candidates, key=lambda e: e["fitness"])
 
     # Seleciona aleatoriamente k cromossomos para o torneio
     tournament_candidates = random.sample(population, tournament_size)
-    # Escolhe o cromossomo com a menor aptidão no torneio
+    # Escolhe o cromossomo com a melhor aptidão no torneio
     parent2 = min(tournament_candidates, key=lambda e: e["fitness"])
 
     return parent1, parent2
@@ -80,18 +80,18 @@ def replacement(population, new_population):
 
 algorithm_executions = 100
 times_calculated_fitness = 0
+mutation_rate = 0.2
+# intervalo de domínio para x e y
+x_range = (-2, 2)
+y_range = (-2, 2)
 optimal_fitness = 3
 minimal_rate_to_hit = 0.01
 hits = 0
 
 
 for _ in range(algorithm_executions):
-    population_size = 50
+    population_size = 100
     generation = 1
-
-    # intervalos comummente usados para x e y
-    x_range = (-2, 2)
-    y_range = (-2, 2)
 
     population = initialize_population(population_size, x_range, y_range)
     population = evaluate_fitness(population)
@@ -107,8 +107,6 @@ for _ in range(algorithm_executions):
 
             children.append(child1)
             children.append(child2)
-
-        mutation_rate = 0.1
 
         for individual in children:
             if random.random() < mutation_rate:
@@ -139,3 +137,4 @@ for _ in range(algorithm_executions):
             break
 
 print(f"Acertos {hits}")
+print(f"Vezes que foi calculado o fitness {times_calculated_fitness}")
