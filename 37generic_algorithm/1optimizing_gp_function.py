@@ -1,8 +1,4 @@
 import random
-from icecream import ic
-
-
-calculated_fitness = 0
 
 
 def initialize_population(population_size, x_range, y_range):
@@ -27,13 +23,13 @@ def goldstein_price_function(x, y):
 
 
 def evaluate_fitness(population):
-    global calculated_fitness
+    global times_calculated_fitness
 
     for individual in population:
         x, y = individual["chromosome"]
         fitness = goldstein_price_function(x, y)
         individual["fitness"] = fitness
-        calculated_fitness += 1
+        times_calculated_fitness += 1
     return population
 
 
@@ -82,50 +78,64 @@ def replacement(population, new_population):
     return next_generation
 
 
-population_size = 50
-generation = 1
+algorithm_executions = 100
+times_calculated_fitness = 0
+optimal_fitness = 3
+minimal_rate_to_hit = 0.01
+hits = 0
 
-# intervalos comummente usados para x e y
-x_range = (-2, 2)
-y_range = (-2, 2)
 
-population = initialize_population(population_size, x_range, y_range)
-population = evaluate_fitness(population)
+for _ in range(algorithm_executions):
+    population_size = 50
+    generation = 1
 
-history_of_best = []
+    # intervalos comummente usados para x e y
+    x_range = (-2, 2)
+    y_range = (-2, 2)
 
-while True:
-    children = []
+    population = initialize_population(population_size, x_range, y_range)
+    population = evaluate_fitness(population)
 
-    for _ in range(len(population) // 2):
-        parent1, parent2 = tournament_selection(population, tournament_size=3)
-        child1, child2 = crossover(parent1, parent2)
+    history_of_best = []
 
-        children.append(child1)
-        children.append(child2)
+    while True:
+        children = []
 
-    mutation_rate = 0.1
+        for _ in range(len(population) // 2):
+            parent1, parent2 = tournament_selection(population, tournament_size=3)
+            child1, child2 = crossover(parent1, parent2)
 
-    for individual in children:
-        if random.random() < mutation_rate:
-            individual = mutate(individual, x_range, y_range)
+            children.append(child1)
+            children.append(child2)
 
-    children = evaluate_fitness(children)
+        mutation_rate = 0.1
 
-    population = replacement(population, children)
+        for individual in children:
+            if random.random() < mutation_rate:
+                individual = mutate(individual, x_range, y_range)
 
-    generation += 1
+        children = evaluate_fitness(children)
 
-    best = min(population, key=lambda x: x["fitness"])
-    history_of_best.append(best)
+        population = replacement(population, children)
 
-    # mantém histórico de melhores com 5 elementos no máximo
-    if len(history_of_best) == 6:
-        history_of_best.pop(0)
+        generation += 1
 
-    # se o melhor não melhorou nas últimas 3 vezes chegou a hora de parar
-    if len(history_of_best) == 5 and all(
-        history_of_best[0] == e for e in history_of_best
-    ):
-        ic(best)
-        break
+        best = min(population, key=lambda x: x["fitness"])
+        history_of_best.append(best)
+
+        # mantém histórico de melhores com 5 elementos no máximo
+        if len(history_of_best) == 6:
+            history_of_best.pop(0)
+
+        # se o melhor não melhorou nas últimas 3 vezes chegou a hora de parar
+        if len(history_of_best) == 5 and all(
+            history_of_best[0]["fitness"] == e["fitness"] for e in history_of_best
+        ):
+            print(best)
+
+            if (best["fitness"] - optimal_fitness) < minimal_rate_to_hit:
+                hits += 1
+
+            break
+
+print(f"Acertos {hits}")
