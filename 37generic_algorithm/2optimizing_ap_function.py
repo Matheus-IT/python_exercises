@@ -13,6 +13,7 @@ def initialize_population(population_size, x_range, y_range):
 
 
 def aluffi_pentini_function(x, y):
+    """AP (Aluffi-Pentini Problem)"""
     return (0.25 + x**4) - (0.5 + x**2) + (0.1 + x) + (0.5 + y**2)
 
 
