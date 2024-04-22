@@ -13,6 +13,7 @@ def initialize_population(population_size, x_range, y_range):
 
 
 def goldstein_price_function(x, y):
+    """Goldstein and Price (GP) function"""
     term1 = 1 + ((x + y + 1) ** 2) * (
         19 - 14 * x + 3 * x**2 - 14 * y + 6 * x * y + 3 * y**2
     )
