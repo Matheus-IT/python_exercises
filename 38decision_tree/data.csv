@@ -1,0 +1,17 @@
+time,match_type,court_surface,best_effort,outcome
+morning,master,grass,1,f
+afternoon,grand_slam,clay,1,f
+night,friendly,hard,0,f
+afternoon,friendly,mixed,0,n
+afternoon,master,clay,1,n
+afternoon,grand_slam,grass,1,f
+afternoon,grand_slam,hard,1,f
+afternoon,grand_slam,hard,1,f
+morning,master,grass,1,f
+afternoon,grand_slam,clay,1,n
+night,friendly,hard,0,f
+night,master,mixed,1,n
+afternoon,master,clay,1,n
+afternoon,master,grass,1,f
+afternoon,grand_slam,hard,1,f
+afternoon,grand_slam,clay,1,f

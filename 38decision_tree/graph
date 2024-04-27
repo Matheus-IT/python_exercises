@@ -1,0 +1,15 @@
+digraph {
+	140088722900784 [label=court_surface]
+	140088722900928 [label="Class: n, Weight: 2" shape=box]
+	140088722900784 -> 140088722900928 [label=mixed]
+	140088722901024 [label="Class: f, Weight: 4" shape=box]
+	140088722900784 -> 140088722901024 [label=grass]
+	140088722901120 [label=match_type]
+	140088722900784 -> 140088722901120 [label=clay]
+	140088722901264 [label="Class: n, Weight: 2" shape=box]
+	140088722901120 -> 140088722901264 [label=master]
+	140088722901360 [label="Class: f, Weight: 3" shape=box]
+	140088722901120 -> 140088722901360 [label=grand_slam]
+	140088722901168 [label="Class: f, Weight: 5" shape=box]
+	140088722900784 -> 140088722901168 [label=hard]
+}
