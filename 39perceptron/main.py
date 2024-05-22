@@ -60,33 +60,35 @@ df = pd.read_csv("39perceptron/training_data.txt")
 
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=1)
 
-p = Perceptron(input_size=3, learning_rate=0.01)
-
-stats = {"initial_weights": p.weights.copy()}
-
-# train perceptron
-X = train_df[["x1", "x2", "x3"]].values
-y = train_df["d"].values
-p.train(X, y)
-
-stats["final_weights"] = p.weights.copy()
-stats["epochs"] = p.epochs
-
-# test and calculate accuracy
-X = test_df[["x1", "x2", "x3"]].values
-y = test_df["d"].values
-accuracy = calculate_accuracy(p, X, y)
-stats["accuracy"] = accuracy
-
-# predict validation data values of "d"
 validation_df = pd.read_csv("39perceptron/validation_data.txt")
-result = np.array([p.predict(x) for x in validation_df.values])
-validation_df["d"] = result
+
+for i in range(5):
+    p = Perceptron(input_size=3, learning_rate=0.01)
+
+    stats = {"pesos iniciais": p.weights.copy()}
+
+    # train perceptron
+    X = train_df[["x1", "x2", "x3"]].values
+    y = train_df["d"].values
+    p.train(X, y)
+
+    stats["pesos finais"] = p.weights.copy()
+    stats["épocas"] = p.epochs
+
+    # test and calculate accuracy
+    X = test_df[["x1", "x2", "x3"]].values
+    y = test_df["d"].values
+    accuracy = calculate_accuracy(p, X, y)
+    stats["acurácia"] = accuracy
+
+    # predict validation data values of "d"
+
+    result = np.array([p.predict(x) for x in validation_df[["x1", "x2", "x3"]].values])
+    validation_df[f"d{i+1}"] = result
+
+    print("{")
+    for e in stats.items():
+        print(f"{e[0]}: {e[1]},")
+    print("}")
 
 print(validation_df)
-print()
-
-print("{")
-for e in stats.items():
-    print(f"{e[0]}: {e[1]},")
-print("}")
