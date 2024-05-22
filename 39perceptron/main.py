@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 class Perceptron:
     def __init__(self, input_size, learning_rate=0.01, max_epochs=500):
-        self.weights = np.linspace(0, 1, input_size)
+        self.weights = np.random.uniform(0, 1, input_size)
         self.bias = 0
         self.learning_rate = learning_rate
         self.epochs = 0
@@ -38,19 +38,16 @@ class Perceptron:
         for _ in range(self.max_epochs):
             ready_to_stop = True
             self.epochs += 1
+
             for i in range(len(X)):
                 error = y[i] - self.predict(X[i])
                 self.weights += self.learning_rate * error * X[i]
                 self.bias += self.learning_rate * error
-                # print("-" * 50)
-                # print("error", error)
-                # print("self.bias", self.bias)
-                # print("self.weights", self.weights)
+
                 if error != 0:
                     ready_to_stop = False
             if ready_to_stop:
                 break
-        # print("self.epochs", self.epochs)
 
 
 def calculate_accuracy(model, X, y):
@@ -65,15 +62,31 @@ train_df, test_df = train_test_split(df, test_size=0.2, random_state=1)
 
 p = Perceptron(input_size=3, learning_rate=0.01)
 
+stats = {"initial_weights": p.weights.copy()}
+
+# train perceptron
 X = train_df[["x1", "x2", "x3"]].values
 y = train_df["d"].values
 p.train(X, y)
 
+stats["final_weights"] = p.weights.copy()
+stats["epochs"] = p.epochs
+
+# test and calculate accuracy
 X = test_df[["x1", "x2", "x3"]].values
 y = test_df["d"].values
 accuracy = calculate_accuracy(p, X, y)
-print("Accuracy on test set:", accuracy)
+stats["accuracy"] = accuracy
 
-# print(">>>", p.predict([-0.3665, 0.0620, 5.9891]))
-# print(">>>", p.predict([-0.6508, 0.1097, 4.0009]))
-# print(">>>", p.predict([0.2626, 1.1476, 7.7985]))
+# predict validation data values of "d"
+validation_df = pd.read_csv("39perceptron/validation_data.txt")
+result = np.array([p.predict(x) for x in validation_df.values])
+validation_df["d"] = result
+
+print(validation_df)
+print()
+
+print("{")
+for e in stats.items():
+    print(f"{e[0]}: {e[1]},")
+print("}")
