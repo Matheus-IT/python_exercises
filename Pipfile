@@ -10,6 +10,8 @@ icecream = "*"
 c45-decision-tree = "*"
 pandas = "*"
 graphviz = "*"
+matplotlib = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
