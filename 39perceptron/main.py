@@ -82,7 +82,6 @@ for i in range(5):
     stats["acurácia"] = accuracy
 
     # predict validation data values of "d"
-
     result = np.array([p.predict(x) for x in validation_df[["x1", "x2", "x3"]].values])
     validation_df[f"d{i+1}"] = result
 
